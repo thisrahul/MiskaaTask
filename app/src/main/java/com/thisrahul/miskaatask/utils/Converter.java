@@ -1,7 +1,4 @@
-package com.thisrahul.miskaatask.converter;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+package com.thisrahul.miskaatask.utils;
 
 import androidx.room.TypeConverter;
 
@@ -9,15 +6,16 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thisrahul.miskaatask.model.Languages;
 
-import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Converter {
+
     @TypeConverter
     public static List<String> fromString(String value) {
-        Type listType = new TypeToken<ArrayList<String>>() {}.getType();
+        Type listType = new TypeToken<ArrayList<String>>() {
+        }.getType();
         return new Gson().fromJson(value, listType);
     }
 
@@ -28,29 +26,6 @@ public class Converter {
         return json;
     }
 
-//    @TypeConverter
-//    public static List<Languages> fromValue(String value) {
-//        Type listType = new TypeToken<ArrayList<String>>() {}.getType();
-//        return new Gson().fromJson(value, listType);
-//    }
-//
-//    @TypeConverter
-//    public static String fromArrayList(List<Languages> list) {
-//        Gson gson = new Gson();
-//        return gson.toJson(list);
-//    }
-
-    @TypeConverter
-    public static byte[] fromBitmap(Bitmap bitmap){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        return stream.toByteArray();
-    }
-
-    @TypeConverter
-    public static Bitmap toBitmap(byte[] bytes){
-        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-    }
 
     @TypeConverter
     public String fromOptionValuesList(List<Languages> optionValues) {

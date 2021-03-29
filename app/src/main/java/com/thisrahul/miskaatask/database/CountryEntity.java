@@ -1,15 +1,13 @@
 package com.thisrahul.miskaatask.database;
 
-import android.graphics.Bitmap;
-
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import com.thisrahul.miskaatask.converter.Converter;
 import com.thisrahul.miskaatask.model.Languages;
+import com.thisrahul.miskaatask.utils.Converter;
 
 import java.util.List;
 
@@ -22,33 +20,33 @@ public class CountryEntity {
     private int id;
 
     @ColumnInfo(name = "name")
-    private String name;
+    private final String name;
 
     @ColumnInfo(name = "capital")
-    private  String capital;
+    private final String capital;
 
     @ColumnInfo(name = "region")
-    private  String region;
+    private final String region;
 
     @ColumnInfo(name = "sub_region")
-    private String subRegion;
+    private final String subRegion;
 
     @ColumnInfo(name = "population")
-    private String population;
+    private final String population;
 
     @ColumnInfo(name = "borders")
     @TypeConverters({Converter.class})
-    private List<String> borders;
+    private final List<String> borders;
 
     @ColumnInfo(name = "languages")
     @TypeConverters({Converter.class})
-    private List<Languages> languages;
+    private final List<Languages> languages;
 
     @ColumnInfo(name = "flags")
-    private String flags;
+    private final String flags;
 
 
-    public CountryEntity(String name, String capital, String region, String subRegion, String population,List<String> borders,List<Languages> languages,String flags) {
+    public CountryEntity(String name, String capital, String region, String subRegion, String population, List<String> borders, List<Languages> languages, String flags) {
         this.name = name;
         this.capital = capital;
         this.region = region;
